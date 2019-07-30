@@ -91,6 +91,7 @@ $app->register(Dusterio\LumenPassport\PassportServiceProvider::class);
 | can respond to, as well as the controllers that may handle them.
 |
 */
+$app->configure('auth');
 
 $app->router->group([
     'namespace' => 'App\Http\Controllers',
