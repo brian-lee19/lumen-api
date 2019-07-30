@@ -45,6 +45,7 @@ $app->singleton(
     Illuminate\Contracts\Console\Kernel::class,
     App\Console\Kernel::class
 );
+$app->configure('auth');
 
 /*
 |--------------------------------------------------------------------------
@@ -82,6 +83,8 @@ $app->routeMiddleware([
 $app->register(Laravel\Passport\PassportServiceProvider::class);
 $app->register(Dusterio\LumenPassport\PassportServiceProvider::class);
 $app->register(Appzcoder\LumenRoutesList\RoutesCommandServiceProvider::class);
+\Dusterio\LumenPassport\LumenPassport::routes($app);
+
 
 /*
 |--------------------------------------------------------------------------
@@ -93,7 +96,6 @@ $app->register(Appzcoder\LumenRoutesList\RoutesCommandServiceProvider::class);
 | can respond to, as well as the controllers that may handle them.
 |
 */
-$app->configure('auth');
 
 $app->router->group([
     'namespace' => 'App\Http\Controllers',
