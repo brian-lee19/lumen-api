@@ -11,13 +11,16 @@
 |
 */
 
+use Illuminate\Http\Request;
+
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->post('login', 'API\UserController@login');
-$router->post('register', 'API\UserController@register');
-
-$router->group(['middleware' => 'auth:api'], function() {
-  $router->post('details', 'API\UserController@details');
+$router->group([
+    'prefix' => 'api'
+], function () use ($router) {
+    $router->post('login', 'API\UserController@login');
+    $router->post('register', 'API\UserController@register');
+    $router->get('users/{id}', 'API\UserController@details');
 });
