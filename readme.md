@@ -10,12 +10,18 @@ see [demo host](https://lumen-api-0719.herokuapp.com)
 1.  Register user
 
     - Endpoint: `{{url}}/api/register`
-      [demo](https://lumen-api-0719.herokuapp.com/api/register)
+    - Params:
+      - email
+      - password
+      - password_confirmation
+      - fullname
 
 2.  Login user
 
     - Endpoint: `{{url}}/api/login`
-      [demo](https://lumen-api-0719.herokuapp.com/api/login)
+    - Params:
+      - email
+      - password
 
 3.  Get user details
 
