@@ -62,5 +62,14 @@ class UserController extends Controller
         return response($response, $this->successStatus);
 
     }
-    
+    /** 
+     * details api 
+     * 
+     * @return \Illuminate\Http\Response 
+     */ 
+    public function details() 
+    { 
+        $user = Auth::user(); 
+        return response()->json(['success' => $user], $this->successStatus); 
+    } 
 }

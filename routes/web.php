@@ -22,5 +22,5 @@ $router->group([
 ], function () use ($router) {
     $router->post('login', 'API\UserController@login');
     $router->post('register', 'API\UserController@register');
-    $router->get('users/{id}', 'API\UserController@details');
+    $router->get('users/{user_id}', 'API\UserController@details');
 });
