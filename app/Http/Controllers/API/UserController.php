@@ -24,7 +24,7 @@ class UserController extends Controller
         if ($user) {
             if (Hash::check($request->password, $user->password)) {
                 $token = $user->createToken('Laravel Password Grant Client')->accessToken;
-                $response = ['token' => $token];
+                $response = ['token' => $token, 'user' => $user];
                 return response($response, $this->successStatus);
             } else {
                 $response = "Password missmatch";
@@ -50,7 +50,8 @@ class UserController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response(['errors'=>$validator->errors()->all()], $this->unprocessableEntity);
+            return response(['errors'=>$validator->errors()->all()],
+                $this->unprocessableEntity);
         }
 
         $request['password']=Hash::make($request['password']);

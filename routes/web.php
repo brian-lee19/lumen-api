@@ -22,5 +22,8 @@ $router->group([
 ], function () use ($router) {
     $router->post('login', 'API\UserController@login');
     $router->post('register', 'API\UserController@register');
-    $router->get('users/{user_id}', 'API\UserController@details');
+
+    $router->group(['middleware' => 'auth'], function () use ($router) {
+        $router->get('users/{user_id}', 'API\UserController@details');
+    });
 });
